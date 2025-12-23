@@ -1,21 +1,26 @@
 <?php
+$city = urlencode($_GET['city']);
+$apiKey = "5cc8d21d86a54f19a5b232516252312"; 
 
-$city = $_GET['city'];
-$apiKey = "e8e62474b1f68e93ed27f196af157c31";
+$url = "http://api.weatherapi.com/v1/current.json?key=$apiKey&q=$city&aqi=no";
 
-$url = "https://api.openweathermap.org/data/2.5/weather?q=$city&units=metric&appid=$apiKey";
+$response = @file_get_contents($url);
 
-$response = file_get_contents($url);
+if (!$response) {
+    echo json_encode(["error" => "Cannot fetch weather. Check API key or city name"]);
+    exit;
+}
+
 $data = json_decode($response, true);
 
-if ($data['cod'] != 200) {
-    echo json_encode(["error" => "City not found"]);
+if (!isset($data['current'])) {
+    echo json_encode(["error" => "City not found or API error"]);
     exit;
 }
 
 $result = [
-    "temp" => $data['main']['temp'],
-    "desc" => $data['weather'][0]['description']
+    "temp" => $data['current']['temp_c'],
+    "desc" => $data['current']['condition']['text']
 ];
 
 echo json_encode($result);
