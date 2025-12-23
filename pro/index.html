@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1><i class="fas fa-cloud-sun"></i> Weather Forecast</h1>
+            <p class="tagline">Get accurate weather information for any city worldwide</p>
+        </header>
+        
+        <main class="app-content">
+            <div class="search-section">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="city" placeholder="Enter city name (e.g., London, Paris, Tokyo)">
+                    <button id="search-btn" onclick="getWeather()">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                    <button id="location-btn" onclick="getWeatherByLocation()">
+                        <i class="fas fa-location-arrow"></i> Use My Location
+                    </button>
+                </div>
+                <div class="examples">
+                    <span>Try:</span>
+                    <button class="example-city" onclick="searchExample('London')">London</button>
+                    <button class="example-city" onclick="searchExample('Tokyo')">Tokyo</button>
+                    <button class="example-city" onclick="searchExample('Dubai')">Dubai</button>
+                </div>
+            </div>
+            
+            <div class="weather-display">
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Loading weather data...</p>
+                </div>
+                
+                <div id="result" class="weather-card hidden">
+                    <div class="weather-header">
+                        <h2 id="city-name">City Name</h2>
+                        <div class="current-time" id="current-time"></div>
+                    </div>
+                    
+                    <div class="weather-main">
+                        <div class="temperature-section">
+                            <div class="current-temp">
+                                <span id="temp-value">--</span>
+                                <span class="temp-unit">°C</span>
+                            </div>
+                            <div class="feels-like">
+                                Feels like <span id="feels-like">--</span>°C
+                            </div>
+                            <div class="weather-description" id="weather-desc">--</div>
+                        </div>
+                        
+                        <div class="weather-icon">
+                            <img id="weather-icon" src="" alt="Weather Icon">
+                        </div>
+                    </div>
+                    
+                    <div class="weather-details">
+                        <div class="detail-card">
+                            <div class="detail-icon">
+                                <i class="fas fa-wind"></i>
+                            </div>
+                            <div class="detail-info">
+                                <div class="detail-label">Wind</div>
+                                <div class="detail-value" id="wind-value">-- kph</div>
+                                <div class="detail-subtext" id="wind-direction">--</div>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-card">
+                            <div class="detail-icon">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <div class="detail-info">
+                                <div class="detail-label">Humidity</div>
+                                <div class="detail-value" id="humidity-value">--%</div>
+                                <div class="detail-subtext">Relative Humidity</div>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-card">
+                            <div class="detail-icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <div class="detail-info">
+                                <div class="detail-label">Pressure</div>
+                                <div class="detail-value" id="pressure-value">-- mb</div>
+                                <div class="detail-subtext">Atmospheric Pressure</div>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-card">
+                            <div class="detail-icon">
+                                <i class="fas fa-cloud-rain"></i>
+                            </div>
+                            <div class="detail-info">
+                                <div class="detail-label">Precipitation</div>
+                                <div class="detail-value" id="precipitation-value">-- mm</div>
+                                <div class="detail-subtext">Last Hour</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="unit-toggle">
+                        <span class="unit-label">Temperature Unit:</span>
+                        <div class="toggle-switch">
+                            <button class="unit-btn active" data-unit="celsius">°C</button>
+                            <button class="unit-btn" data-unit="fahrenheit">°F</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="error" class="error-card hidden">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Weather Data Unavailable</h3>
+                    <p id="error-message">Please try again with a valid city name.</p>
+                    <button class="retry-btn" onclick="hideError()">Try Again</button>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="app-footer">
+            <p>Powered by <a href="https://www.weatherapi.com/" target="_blank">WeatherAPI.com</a></p>
+            <p class="last-update" id="last-update"></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
