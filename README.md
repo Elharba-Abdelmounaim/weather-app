@@ -3,12 +3,18 @@
 Weather App is a simple web application that provides the current weather for any city using the **WeatherAPI**.  
 The project is built with **HTML, CSS, JavaScript, and PHP**.
 
+## 🌐 Live Demo
+
+You can view the live version of the Weather App here:
+
+👉 https://elharba-abdelmounaim.github.io/weather-app/pro/
+
 ---
 
-## 📌 Features
+## Features
 
-- 🔍 Search weather by city name
-- 📊 Display essential weather information:
+- Search weather by city name
+- Display essential weather information:
   - Temperature in °C and °F
   - Weather description (e.g., Overcast, Rain, Sunny)
   - Weather icon
@@ -17,16 +23,16 @@ The project is built with **HTML, CSS, JavaScript, and PHP**.
   - Humidity
   - Pressure
   - Precipitation
-- 📍 Location information: city name, country, and region
-- 🌙 Dark/Light mode toggle
-- ⭐ Favorite cities with save functionality
-- 📱 Responsive design for all devices
-- 🔄 Auto-refresh of weather information
-- 🎯 Search autocomplete suggestions
+- Location information: city name, country, and region
+- Dark/Light mode toggle
+- Favorite cities with save functionality
+- Responsive design for all devices
+- Auto-refresh of weather information
+- Search autocomplete suggestions
 
 ---
 
-## 🛠️ Technologies
+##  Technologies
 
 **Frontend:**
 - HTML5
@@ -47,7 +53,7 @@ The project is built with **HTML, CSS, JavaScript, and PHP**.
 
 ---
 
-## 🚀 How to Run Locally
+##  How to Run Locally
 
 **Prerequisites:**
 - Local web server (XAMPP, WAMP, MAMP, or PHP Built-in Server)
